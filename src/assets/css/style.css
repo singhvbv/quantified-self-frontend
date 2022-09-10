@@ -1,0 +1,273 @@
+body {
+
+}
+
+.backdrop {
+    background-color: #e3edf7;
+
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    height: 82vh;
+    border-radius: 20px;
+    background: #e3edf7;
+    box-shadow: 40px 40px 80px #bfc7cf,
+    -20px -20px 40px rgba(159, 179, 201, 0.43);
+
+    margin: 7vh 10% 7vh 10%;
+    padding: 20px;
+}
+
+.lable {
+    font-family: 'Quicksand';
+    font-size: 18px !important;
+
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.medium-text-bold {
+    font-family: 'Quicksand';
+    font-size: 20px !important;
+    font-weight: bold;
+}
+
+
+.large-text-bold {
+    font-family: 'Quicksand';
+    font-size: 26px !important;
+    font-weight: bold;
+}
+
+.xl-large-text-bold {
+    font-family: 'Quicksand';
+    font-size: 30px !important;
+    font-weight: bold;
+}
+
+.small-text {
+    font-family: 'Quicksand';
+
+    font-size: 14px !important;
+    font-weight: lighter;
+}
+
+/*form*/
+form {
+    padding: 16px;
+    width: 320px;
+    margin: 0 auto;
+    font-family: 'Quicksand';
+}
+
+form input {
+    border: 0;
+    outline: 0;
+    font-size: 16px;
+    border-radius: 320px;
+    padding: 16px;
+    background-color: #e3edf7;
+    text-shadow: 1px 1px 0 #e3edf7;
+}
+
+form label {
+    display: block;
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+form input {
+    margin-right: 8px;
+    box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #e3edf7;
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.2s ease-in-out;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+form input:focus {
+    box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #ebecf0;
+}
+
+.neo-button-submit {
+    width: 100%;
+    height: 55px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 320px;
+    background: linear-gradient(145deg, #ff5c83, #f50142);
+    box-shadow: 2px 2px 4px #ff5c83, -2px -2px 4px #f50142;
+    font-family: 'Quicksand';
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.neo-button-submit:hover {
+    width: 100%;
+    height: 55px;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    background: linear-gradient(145deg, #ff5c83, #f50142);
+    box-shadow: inset 2px 2px 4px #ff5c83, inset -2px -2px 4px #f50142;
+    font-family: 'Quicksand';
+    font-weight: bold;
+    color: #ffffff;
+
+}
+
+/* The snackbar - position it at the bottom and in the middle of the screen */
+
+#error_snackbar, #snackbar {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background: linear-gradient(145deg, #ff5c83, #f50142);
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    bottom: 30px; /* 30px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#error_snackbar.show, #snackbar.show {
+    visibility: visible; /* Show the snackbar */
+    /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+    However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
+.logo-wrapper {
+    display: flex;
+    align-self: flex-end;
+    width: 175px;
+    margin-left: 80px;
+    height: auto;
+}
+
+.flex-wrapper {
+    display: flex;
+
+}
+
+.logo-out {
+    justify-content: end;
+}
+
+.logo-wrapper-out {
+    display: flex;
+    align-self: flex-end;
+    width: 175px;
+    margin: 10px 50px 0 0;
+    height: auto;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+
+}
+.footer_text
+{
+    font-family: Quicksand;
+    font-weight: lighter;
+    font-size: 11px;
+}
+
+.neo-button-save {
+    width: 40% !important;
+    height: 35px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 100px;
+    background: linear-gradient(145deg, #ff5c83, #f50142);
+    font-family: 'Quicksand';
+    color: #ffffff;
+}
+
+.neo-button-export {
+    width: 80px !important;
+    height: 35px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 100px;
+    background: linear-gradient(145deg, #ff5c83, #f50142);
+    font-family: 'Quicksand';
+    color: #ffffff;
+}
+
+.neo-button-download {
+    width: 80px !important;
+    height: 25px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: linear-gradient(145deg, #9045f3, #9301f5);
+    font-family: 'Quicksand';
+    color: #ffffff;
+}
+
+.label-align {
+    padding-top: 5px !important;
+    padding-left: 10px !important;
+    font-family: 'Quicksand';
+}
