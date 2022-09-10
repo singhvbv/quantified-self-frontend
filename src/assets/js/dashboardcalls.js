@@ -94,6 +94,7 @@ export default {
       .post("http://127.0.0.1:5000/api/user_tracker",data, { headers: headers })
       .then((res) => {
         console.log(res.data);
+        localStorage.removeItem('dashData');
          location.reload();
         //Perform Success Action
        
@@ -213,6 +214,7 @@ export default {
         .post("http://127.0.0.1:5000/api/custom_tracker", this.custom_post_form, { headers: headers })
         .then((res) => {
 console.log(res);
+localStorage.removeItem('dashData');
             location.reload();
           //Perform Success Action
         })
@@ -306,6 +308,7 @@ deleteThisNow:function()
         .then((res) => {
 console.log(res);
             this.showSnack = !this.showSnack;
+            localStorage.removeItem('dashData');
           //Perform Success Action
           setTimeout(function () {
                 location.reload();
@@ -386,6 +389,7 @@ submit_edit_custom_form:function()
 console.log(res);
             this.showSnack = !this.showSnack;
           //Perform Success Action
+          localStorage.removeItem('dashData');
           setTimeout(function () {
                 location.reload();
               }, 1000);
@@ -469,6 +473,8 @@ save_tracker_data:function(type, value)
         .then((res) => {
 console.log(res);
             this.showSnack = !this.showSnack;
+            localStorage.removeItem('logsData');
+            localStorage.removeItem('dashData');
           //Perform Success Action
           setTimeout(function () {
                 location.reload();
@@ -489,6 +495,10 @@ console.log(res);
 }
   },
   created() {
+    let dashData = localStorage.getItem("dashData");
+
+    if (dashData == null || dashData == undefined) {
+
     // call the api to get the tracker data
     this.showLoading = true;
     let headers = {
@@ -506,6 +516,8 @@ console.log(res);
         this.outer_loop_count = parseInt(this.inner_data.outer_loop_count),
         this.user_trackers_list = this.inner_data.user_trackers_list,
         console.log(res);
+        localStorage.setItem("dashData", JSON.stringify(res));
+
       })
       .catch((error) => {
         console.log(error);
@@ -513,5 +525,15 @@ console.log(res);
       .finally(() => {
         //Perform action in always
       });
+    }
+    else
+    {
+      let res = JSON.parse(localStorage.getItem("dashData"));
+      this.inner_data = res.data;
+      this.user_email = this.inner_data.user;
+      this.outer_loop_count = parseInt(this.inner_data.outer_loop_count),
+      this.user_trackers_list = this.inner_data.user_trackers_list
+
+    }
   },
 };

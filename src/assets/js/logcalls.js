@@ -53,7 +53,7 @@ export default {
       deleteThisNow: function () {
       this.showDeleteDialog = !this.showDeleteDialog;
       // call the api to delete the logs
-  
+      let log_id = this.tracker_log_id
       let headers = {
         "Content-Type": "application/json;charset=utf-8",
       };
@@ -66,6 +66,19 @@ export default {
           //Perform Success Action
            this.showSnack = !this.showSnack;
            this.showLoading = false;  
+           
+            let local =  JSON.parse(localStorage.getItem("logsData"));
+            let local_cp =  local
+            let logs_updated = local_cp.data.data.filter(function(item, index){
+              console.log(index)
+
+              return item.id != log_id;
+            })
+            local.data.data = logs_updated
+            
+
+            localStorage.setItem("logsData", JSON.stringify(local));
+           
           
         })
         .catch((error) => {
@@ -247,6 +260,7 @@ export default {
             this.showSnack = true;
             //Perform Success Action
             data.value= value
+            localStorage.removeItem('logsData');
             
           })
           .catch((error) => {
@@ -268,6 +282,11 @@ export default {
   
     
     created() {
+
+      let logsData = localStorage.getItem("logsData");
+
+      if (logsData == null || logsData == undefined) {
+
       // call the api to get the tracker data
       this.showLoading = true;
       let headers = {
@@ -278,6 +297,8 @@ export default {
       this.$http
         .get("http://127.0.0.1:5000/api/logs", { headers: headers })
         .then((res) => {
+
+          localStorage.setItem("logsData", JSON.stringify(res));
           console.log(res.data.data);
           this.datas = res.data.data;
           this.today = res.data.today;
@@ -290,5 +311,13 @@ export default {
         .finally(() => {
           //Perform action in always
         });
+      }
+      else
+      {
+        let res = JSON.parse(localStorage.getItem("logsData"));
+        this.datas = res.data.data;
+        this.today = res.data.today;
+
+      }
     },
   };

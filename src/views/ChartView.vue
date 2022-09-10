@@ -1,8 +1,6 @@
 <template>
 <div>
 <div class="main dashboard flex-row">
-
-
     <div class="flex-column side-bar h-100">
         <div class="icon-space flex-column h-100">
             <div>

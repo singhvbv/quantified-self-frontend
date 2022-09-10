@@ -1,8 +1,6 @@
 <template>
 <div>
 <div class="main dashboard flex-row">
-
-
     <div class="flex-column side-bar h-100">
         <div class="icon-space flex-column h-100">
             <div>
@@ -150,6 +148,11 @@ export default {
         .post("http://127.0.0.1:5000/api/settings",data, { headers: headers })
         .then((res) => {
         console.log(res);
+        let local =  JSON.parse(localStorage.getItem("settingsData"));
+        local.data.data.monthly_report_type = this.monthly_rep_type;
+        localStorage.setItem("settingsData", JSON.stringify(local));
+       
+        
           //Perform Success Action
         })
         .catch((error) => {
@@ -253,6 +256,10 @@ export default {
     },
     
      created() {
+      let settingsData = localStorage.getItem("settingsData");
+
+      if (settingsData == null || settingsData == undefined) {
+        
       // call the api to get settings
       this.showLoading = true;
       let headers = {
@@ -263,6 +270,8 @@ export default {
       this.$http
         .get("http://127.0.0.1:5000/api/settings", { headers: headers })
         .then((res) => {
+          localStorage.setItem("settingsData", JSON.stringify(res));
+        
         if (res.data.data != "None")
         {
             this.monthly_rep_type = res.data.data.monthly_report_type
@@ -277,6 +286,13 @@ export default {
           //Perform action in always
       this.showLoading = false;
         });
+      }
+      else
+      {
+        let res = JSON.parse(localStorage.getItem("settingsData"));
+        this.monthly_rep_type = res.data.data.monthly_report_type
+
+      }
     },
 
 }

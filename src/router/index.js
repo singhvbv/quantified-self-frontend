@@ -51,6 +51,9 @@ const routes = [
     beforeEnter(to, from, next) {
       console.log(to, from, next);
       localStorage.removeItem('token');
+      localStorage.removeItem('settingsData');
+      localStorage.removeItem('logsData');
+      localStorage.removeItem('dashData');
       window.location = "login";
     }
   },
